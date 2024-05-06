@@ -1,11 +1,17 @@
-# Use a imagem base kasmweb/desktop:1.14.0
-FROM kasmweb/desktop:1.14.0
+# Use a imagem base linuxserver/heimdall
+FROM linuxserver/heimdall
 
-# Definir a variável de ambiente VNC_PW para a senha desejada
-ENV VNC_PW=password
+# Definir as variáveis de ambiente
+ENV PUID=1000
+ENV PGID=1000
+ENV TZ=Europe/London
 
-# Expor a porta 6901
-EXPOSE 6901
+# Expor as portas
+EXPOSE 80
+EXPOSE 443
 
-# Configurar o tamanho da memória compartilhada
-CMD ["--shm-size=512m"]
+# Configurar os volumes
+VOLUME /home/user/appdata/heimdall:/config
+
+# Reiniciar a menos que parado
+CMD ["unless-stopped"]
