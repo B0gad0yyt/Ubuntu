@@ -1,5 +1,5 @@
 # Use a imagem base kasmweb/<image>:<tag>
-FROM kasmweb/<image>:<tag>
+FROM kasmweb/ubuntu-bionic-desktop
 
 # Definir a variável de ambiente VNC_PW para a senha desejada
 ENV VNC_PW=password
