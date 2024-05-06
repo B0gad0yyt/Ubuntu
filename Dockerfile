@@ -1,8 +1,11 @@
-# Usa a imagem base dorowu/ubuntu-desktop-lxde-vnc
-FROM dorowu/ubuntu-desktop-lxde-vnc
+# Use a imagem base kasmweb/<image>:<tag>
+FROM kasmweb/<image>:<tag>
 
-# Expor a porta 6080
-EXPOSE 6080
+# Definir a variável de ambiente VNC_PW para a senha desejada
+ENV VNC_PW=password
 
-# Montar o volume /dev/shm:/dev/shm
-VOLUME /dev/shm:/dev/shm
+# Expor a porta 6901
+EXPOSE 6901
+
+# Configurar o tamanho da memória compartilhada
+CMD ["--shm-size=512m"]
